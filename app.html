@@ -22,7 +22,7 @@
         $('#push').click(function(){
           console.log("Test");
           $.ajax({
-            url:'http://d2001e77.ngrok.io',
+            url:'http://b33d9e3d.ngrok.io',
             type:'get',
 
             success:function(data){
@@ -30,8 +30,10 @@
               for(var name in data){
                 str += '<li>'+data[name]+'<li>';
                 }
-              $('#cnt').html('<ul>' + str + '</ul>');
+                  $('#cnt').html('<ul>' + str + '</ul>');
+
             }
+
          })
       });
 

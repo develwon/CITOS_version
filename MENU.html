@@ -16,7 +16,26 @@
   }
    </style>
    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script>
+    $(document).ready(function() {
+      $("#mymenu").submit(function(event) {
+        event.preventDefault();
+        var $form = $( this ), url = $form.attr( 'action' );
+        var posting = $.post( url, $('#mymenu').serialize() );
+        //
+        // function check() {
+        //   if(userinput)
+        //
+        // }
+        posting.done(function( data ) {
+          console.log(data);
+          $("#qr").attr("src", data.QRcode);
+          // alert('success');
+        });
+      });
+  });
 
+   </script>
   </head>
   <body>
     <h1> Device Main Home </h1>
@@ -27,10 +46,12 @@
           <th>햄버거</th><th>피자</th><th>치킨</th>
         </tr>
       </thead>
-      <form action="http://d2001e77.ngrok.io/qrcode" method="post">
+      <form action="http://b33d9e3d.ngrok.io/qrcode" method="post" name="userinput" id="mymenu" >
         <tbody>
           <tr>
-            <td>빅 맥<input type="checkbox" name="menu" value="빅맥" /> </td><td>고구마 피자<input type="checkbox" name="menu" value="gogumapizza" /></td><td>후라이드 치킨<input type="checkbox" name="menu" value="후라이드치킨" /></td>
+            <td>빅 맥<input type="checkbox" name="menu" value="빅맥" /> 5000 원 <input type="checkbox" name="price" value="5000" /></td><td>고구마 피자<input type="checkbox" name="menu" value="gogumapizza" /></td><td>후라이드 치킨<input type="checkbox" name="menu" value="후라이드치킨" /></td>
+            <!-- <td>빅 맥<input type="checkbox" name="menu" value="빅맥" /> </td><td>고구마 피자<input type="checkbox" name="menu" value="gogumapizza" /></td><td>후라이드 치킨<input type="checkbox" name="menu" value="후라이드치킨" /></td> -->
+          </tr>
           </tr>
           <tr>
             <td>골든 에그 치즈버거<input type="checkbox" name="menu" value="골든에그치즈버거" /></td><td>치즈 피자<input type="checkbox" name="menu" value="cheezepizza" /></td><td>양념 치킨<input type="checkbox" name="menu" value="양념치킨" /></td>
@@ -45,55 +66,17 @@
             <td>핫 크리스피 버거<input type="checkbox" name="menu" value="핫크리스피버거" /></td><td>포테이토 피자<input type="checkbox" name="menu" value="potatopizza" /></td><td>오리엔탈 파닭<input type="checkbox" name="menu" value="오리엔탈파닭" /></td>
           </tr>
         </tbody>
-        <input type="submit"/>
-
-
+        <!-- <input type="button" value="전송" id="sub" /> -->
+        <input type="submit" value="전송" id="sub" />
+        <!-- <input type="submit" value="전송" id="sub" onclick="foo"/> -->
     </form>
     </table>
-    <p>QRcode :<span id="qr"></span></p>
+    <!-- <p>QRcode :<span id="qr"></span></p> -->
+    <div>QRcode :<img id="qr"></img></div>
     <p>
-    <input type="button" value="이전" />
-    <li><a href="app.html">이전</a></li>
+    <!-- <input type="button" value="이전" /> -->
+    <a href="app.html">이전</a>
     </p>
   </body>
-  <script>
-  (function() {
-  var qrservjs = "http://d2001e77.ngrok.io/qrcode";
-  $.getJSON( qrservjs, function( json ) {
-  console.log( "JSON Data: " + json.data[]);
- })
-    .done(function( data ) {
-      $.each( data.items, function( i, item ) {
-        $( "<img>" ).attr( "src", http://d2001e77.ngrok.io/qrcode );
-      });
-    });
-})();
 
-
-//   var jsres = $.getJSON( "http://d2001e77.ngrok.io/qrcode", function() {
-//   console.log( "success" );
-// });
-//
-//
-// jqxhr.complete(function() {
-//   console.log( "second complete" );
-// });
-  // url = 'http://8f4b2883.ngrok.io/qrcode'
-  // MyController.$inject = [url];
-  // function MyController(url){
-  //   var promise = url.getJsonFileContents();
-  //   promise.then(function (response) {
-  //     var results = response.data;
-  //     console.log("The JSON response is: " + JSON.stringify(results));
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Something went wrong.");
-  //   });
-  // }
-
-  // .done(function() {
-  //   console.log("second success");
-  // })
-
-  </script>
 </html>
