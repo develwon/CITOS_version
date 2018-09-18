@@ -22,11 +22,6 @@
         event.preventDefault();
         var $form = $( this ), url = $form.attr( 'action' );
         var posting = $.post( url, $('#mymenu').serialize() );
-        //
-        // function check() {
-        //   if(userinput)
-        //
-        // }
         posting.done(function( data ) {
           console.log(data);
           $("#qr").attr("src", data.QRcode);
@@ -34,7 +29,6 @@
         });
       });
   });
-
    </script>
   </head>
   <body>
